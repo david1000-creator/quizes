@@ -2,17 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>QUIS</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <h1>choose quiz</h1>
-    <form>
+    <form method="POST" action="/">
         <select name="quizes">
-             {% for element in quizes %}
+             {% for id,name in quizes %}
                 <option value="{{id}}">{{name}}</option>
              {% endfor %}
         </select>
-        <p><input type="submit" value="start"></p>
+        <p class="center"><input type="submit" value="start"></p>
     </form>
 
 </body>

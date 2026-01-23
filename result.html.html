@@ -2,9 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>quiz</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <h1>result</h1>
+    <p>amount of right answers = {{right_ans}} of {{total}}</p>
+    {% if right_ans > total/2 %}
+        <p>you are smart/2</p>
+    {% elif right_ans == total %}
+        <p>you are smart without /2</p>
+    {% else %}
+        <p>you are lower than smart/2</p>
+    {% endif %}
+    <form method="post" action="result">
+       <p class="center"><input type="submit" value="iwannatryagain"></p>
+    </form>
 </body>
 </html>

@@ -1,0 +1,29 @@
+body {
+    background-color: rgb(33, 33, 33);
+    color: white;
+    font-size: 20px;
+    font-family: "Comic Sans", system-ui;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+select, input{
+    font-size: 20px;
+    font-family: "Comic Sans", system-ui;
+}
+
+
+form .center{
+    text-align: center;
+    align-self: center;
+    margin-top: 19px;
+
+}
+input[type="radio"]{
+    margin: 10px auto;
+}
+input[type="submit"]{
+    border-radius: 5px;
+    padding: 6px 9px;
+}

@@ -2,9 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <title>QUIS</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>test</h1>
+    <h1>ANSWER NOW</h1>
+    <form method="post" action="test">
+        <h2>{{text}}</h2>
+        <input type="hidden" name="q_id" value="{{q_id}}">
+         {% for answer in answers %}
+            <input type="radio" name="answer_text" value="{{answer}}">{{answer}}</input><br>
+         {% endfor %}
+        <p class="center"><input type="submit" value="iwannaanswer"></p>
+    </form>
 </body>
 </html>

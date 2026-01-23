@@ -1,4 +1,6 @@
 import sqlite3
+from typing import overload
+
 from queries_choco import *
 from contextlib import contextmanager
 
@@ -29,7 +31,7 @@ class Database:
             conn.commit()
             return cursor.lastrowid
 
-    def complete(self, zapros, data):
+    def complete_data(self, zapros, data):
         if type(data) == str:
             data = [data]
         with self._get_connection() as conn:
@@ -44,6 +46,27 @@ class Database:
             cursor.execute(zapros)
             conn.commit()
             return cursor.fetchall()
+
+def create_db(drop = True):
+    db = Database('quiz.db')
+    db.complete(PRAGMA)
+    if drop:
+        db.complete(DROP + 'quiz')
+        db.complete(DROP + 'questions')
+        db.complete(DROP + 'quiz_content')
+        db.complete(CREATE_QUIZ)
+        db.complete(CREATE_QUESTION)
+        db.complete(CREATE_QUIZ_CONTENT)
+    for q in QUIZES:
+        res = db.create_line('quiz', ADD_QUIZES, q)
+        # print(res)
+    for q in QUESTIONS:
+        res = db.create_line('questions', ADD_QUESTIONS, q)
+        # print(res)
+    for q in CONTENT:
+        res = db.create_line('quiz_content', ADD_CONTENT, q)
+        # print(res)
+    return db
 
 
 if __name__ == '__main__':
